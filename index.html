@@ -1,0 +1,103 @@
+<html>
+  <body>
+    <canvas width="600" height="600"></canvas>
+
+    <script>
+ // we are setting the value of a variable called canvas to an expression
+ // document is a js document
+      let canvas = document.querySelector('canvas');
+  // we also need a reference to the canvas context, context is where we actually do the drawing
+      let context = canvas.getContext('2d');
+  
+  context.fillStyle = 'blue' // fillStyle is not a function but a property. A property is a variable that is part of an object that stores a value
+  //context.fillRect(100, 100, 400, 400); // function that takes 4 params: x,y, w, h
+  // fillRect is a shortcut that is doing 3 things at once: creating a new shape, drawing a rectangle and filling it with some color
+
+
+  //to do it in several lines:
+  context.lineWidth = 4;
+  context.beginPath();
+  context.rect(100, 100, 400, 400);
+  //context.stroke();
+  //context.fill();
+
+
+  context.beginPath();
+  context.arc(300,300,100,0, Math.PI * 2);
+  //context.stroke();
+
+
+
+  for (let i = 0; i < 5; i++){
+    for(let j = 0; j < 5; j++) {
+
+    let w = 60;
+    let h = 60;
+    let gap = 20;
+    let x = 100 + (w + gap) * i;
+    let y = 100 + (h + gap) * j;
+    
+
+    context.beginPath(); //the number after the + is where the next square will start
+    context.rect(x,y,w,h);
+    //context.rect(100 + 110 * i,100,50,50);
+    context.stroke();
+
+    if( i > 0 && i < 3) {
+        context.fillStyle = 'blue'
+        context.beginPath();
+        context.rect(x + 10, y + 10, w - 20, h - 20);
+        context.fill()
+        context.stroke();
+      }
+    }
+  }
+/* 
+      let x = 5;
+
+      let year = 2042
+      let nextYear = year + 1;
+
+      let dinner = 'salad'
+      let sentence = "tonight, dinner will be " + dinner;
+      function saySomething(param) {
+        console.log(param);
+      }
+
+      saySomething(sentence);
+
+      function add(a,b){
+        return a+b;
+      }
+
+      let result = add(5,7);
+      console.log(result);
+
+      // arrow function
+
+      let multiply = (a, b) => {
+        return a * b
+      }
+
+      console.log(multiply(5,7));
+ */
+
+let menu = ['starter', 'main','desser', 'drinks' ];
+for (let i = 0; i < menu.length; i++) { // now it doesnt matter how long the array is, it will go through all the items
+  console.log(menu[i]);
+}
+//populating an array
+
+let years = [];
+
+for (let i = 0; i < 10; i++){
+  years.push(2040 + i);
+}
+
+console.log(years);
+
+
+
+    </script>
+  </body>
+</html>
