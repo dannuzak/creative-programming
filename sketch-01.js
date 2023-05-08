@@ -23,6 +23,13 @@ const sketch = () => {
 			context.rect(x,y,w,h);
 			//context.rect(100 + 110 * i,100,50,50);
 			context.stroke();
+
+			if (Math.random() > 0.5) {
+				context.beginPath();
+				context.lineWidth = 2;
+				context.rect(x + 8, y + 8, w - 16, h - 16);
+				context.stroke();
+			}
 		}
 	}
 
