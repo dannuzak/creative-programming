@@ -15,12 +15,15 @@
     //context.fillRect(100, 100, 400, 400); // function that takes 4 params: x,y, w, h
     // fillRect is a shortcut that is doing 3 things at once: creating a new shape, drawing a rectangle and filling it with some color
  
+
+
     //to do it in several lines:
     context.lineWidth = 4;
     context.beginPath();
     context.rect(100, 100, 400, 400);
     /* context.stroke();
     context.fill(); */
+    context.strokeStyle = 'blue' 
 
     /* Drawing a circle */ 
     
@@ -30,7 +33,7 @@
 
   /* arrays and loops */
       
-  let menu = ['starter', 'main','desser', 'drinks' ];
+  let menu = ['starter', 'main','desser', 'drinks'];
       for (let i = 0; i < menu.length; i++) { // now it doesnt matter how long the array is, it will go through all the items
         console.log(menu[i]);
       }
@@ -52,6 +55,12 @@
       console.log(item);
     })
 
+    const listArtists = ['Cranberries', 'SmashingPumpkins', 'NessiGomes', 'DevendraBenhart'];
+
+  listArtists.forEach(item => {
+    console.log(item)
+  })
+
     /* Drawing a grid of 25 squares */
       
     // Nesting loops
@@ -72,7 +81,7 @@
 
         /*** adding blue squares ***/
         if( i > 0 && i < 3) {
-            context.fillStyle = 'blue'
+            context.fillStyle = 'black'  //blue
             context.beginPath();
             context.rect(x + 10, y + 10, w - 20, h - 20);
             context.fill()
@@ -80,11 +89,12 @@
           }
 
         /*** Creating a random number of squares ***/
-        /*  if (Math.random() > 0.5) {
+         if (Math.random() > 0.5) {
           context.beginPath();
-          context.rect(x + 8, y + 8, width - 16, height - 16);
+          context.lineWidth = 2;
+          context.rect(x + 8, y + 8, w - 16, h - 16);
           context.stroke();
-        } */
+        }
         }
       }
         /* 
@@ -116,11 +126,6 @@
 
           console.log(multiply(5,7));
     */
-
-
-    
-
-
 
     </script>
   </body>
