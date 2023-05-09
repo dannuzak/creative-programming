@@ -16,17 +16,17 @@ const sketch = () => {
     const w = width * 0.3;
     const h = height * 0.3;
 
-    context.save();
-    context.translate(x,y);
+    context.save(); //we save the state first
+    context.translate(x, y);
     context.rotate(0.3);
 
     context.beginPath();
     context.rect(w * 0.5, h * 0.5, w, h);
     context.fill();
-    context.restore();
+    context.restore(); // to avoid the translate to accumulate
 
-    context.translate(100, 400);
-    
+    context.translate(0, 0);
+
     context.beginPath();
     context.arc(0, 0, 50, 0, Math.PI * 2);
     context.fill();
