@@ -1,4 +1,6 @@
 const canvasSketch = require('canvas-sketch');
+const math = require('canvas-sketch-util/math');
+const random = require('canvas-sketch-util/random');
 
     const settings = {
       dimensions: [ 1080, 1080 ]
@@ -30,7 +32,7 @@ const canvasSketch = require('canvas-sketch');
         const radius = width * 0.3;
     
         for (let i = 0; i < num; i++) { // we need to change the angle of rotation based on the index of the loop
-          const slice = degToRad(360 / num);
+          const slice = math.degToRad(360 / num);
           const angle = slice * i;
     
           x = cx + radius * Math.sin(angle);
@@ -39,7 +41,7 @@ const canvasSketch = require('canvas-sketch');
           context.save();
           context.translate(x,y);
           context.rotate(-angle);
-          context.scale(Math.random() * (3 - 1) + 1, 1) // for numbers between 1 and 3
+          context.scale(random.range(3 - 1), 1) // for numbers between 1 and 3
       
           context.beginPath();
           context.rect(-w * 0.5, -h * 0.5, w, h);
