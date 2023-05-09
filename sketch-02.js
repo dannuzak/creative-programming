@@ -4,6 +4,10 @@ const canvasSketch = require('canvas-sketch');
       dimensions: [ 1080, 1080 ]
     };
     
+    const randomRange = (min, max) => {
+      return Math.random() * (max - min) + min;
+    }
+
     const degToRad = degrees => {
       return degrees / 180 * Math.PI;
     }
@@ -35,6 +39,7 @@ const canvasSketch = require('canvas-sketch');
           context.save();
           context.translate(x,y);
           context.rotate(-angle);
+          context.scale(Math.random() * (3 - 1) + 1, 1) // for numbers between 1 and 3
       
           context.beginPath();
           context.rect(-w * 0.5, -h * 0.5, w, h);
