@@ -10,12 +10,13 @@ const settings = {
 const sketch = () => {
   return ({ context, width, height }) => {  // drawing a big white rectangle
     context.fillStyle = 'white';
-    context.fillRect(0, 0, width, height);	
+    context.fillRect(0, 0, width, height);
+	
 /* 
 	const w = 60;
 	const h = 60; 
 	const gap = 20; */
-	const w = width * 0.10;
+	const w = width * 0.10;  // 10% of whatever the width of the canvas is
 	const h = height * 0.10;
 	const gap = width * 0.03;
 	const ix = width * 0.17;
