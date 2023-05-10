@@ -9,12 +9,16 @@ const sketch = () => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
 
-    const point = { x: 800, y: 400, radius: 10 };
+    const pointA = new Point(800, 400, 10 );
+    const pointB = new Point(300, 700, 10 );
     
+    context.beginPath();
+    context.arc(pointA.x, pointA.y, pointA.radius, 0, Math.PI * 2);
+    context.fillStyle = 'black';
+    context.fill();
 
     context.beginPath();
-    context.arc(point.x, point.y, point.radius, 0, Math.PI * 2)
-    context.fillStyle = 'black';
+    context.arc(pointB.x, pointB.y, pointB.radius, 0, Math.PI * 2);
     context.fill();
 
   };
@@ -29,7 +33,13 @@ class Point {
     this.x = x;
     this.y = y;
     this.radius = radius;
-
   }
-
 }
+
+class Agent {
+  constructor() {
+    this.pos = new Point();
+    this.radius = 10;
+  }
+}
+
