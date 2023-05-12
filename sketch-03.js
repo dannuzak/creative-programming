@@ -1,53 +1,58 @@
 const canvasSketch = require('canvas-sketch');
+const random = require('canvas-sketch-util/random');
+const math = require('canvas-sketch-util/math');
 
 const settings = {
-  dimensions: [ 1080, 1080 ],
+	dimensions: [ 1080, 1080 ],
 };
 
-const sketch = () => {
-  return ({ context, width, height }) => {
-    context.fillStyle = 'white';
-    context.fillRect(0, 0, width, height);
 
-    //const point = { x: 800, y: 400, radius: 10 };
-    
-    //Creating several points based on the class Point (same properties and structure)
-   /*  const pointA = new Point(800,400,10);
-    const pointB = new Point(300,700,10); */
-    
-    const agentA = new Agent(800,400);
-    const agentB = new Agent(300,700);
+const sketch = ({ context, width, height }) => {
+	const agents = [];
 
-    context.beginPath();
-    context.arc(pointA.x, pointA.y, pointA.radius, 0, Math.PI * 2);
-    context.fillStyle = 'black';
-    context.fill();
+	for (let i = 0; i < 40; i++) {
+		const x = random.range(0, width);
+		const y = random.range(0, height);
 
-    context.beginPath();
-    context.arc(pointB.x, pointB.y, pointB.radius, 0, Math.PI * 2);
-    context.fill();
-  };
+		agents.push(new Agent(x, y));
+	}
 
+	return ({ context, width, height }) => {
+		context.fillStyle = 'white';
+		context.fillRect(0, 0, width, height);
+
+		agents.forEach(agent => {
+			agent.draw(context);
+		});
+	};
 };
 
 canvasSketch(sketch, settings);
 
-//whenever we need multiple instances of the same classes we can use classes
-//constructor method and we can pass params
-//with this we are referring to the scope of this class
 class Point {
-  constructor(x,y,radius) {
+  constructor(x,y) {
     this.x = x;
     this.y = y;
-    this.radius = radius;
   }
 }
 
 class Agent {
   constructor(x,y) {
     this.pos = new Point(x,y);
-    this.radius = 10;
+    this.radius = random.range(4,12);
   }
+
+  draw(context) {  
+    context.save();
+    context.translate(this.pos.x, this.pos.y);
+
+    context.lineWidth = 4;
+    context.beginPath();
+    context.arc(0,0, this.radius, 0, Math.PI * 2);
+    context.fill();
+    context.stroke();
+
+    context.restore();
+  }
+  
 }
-
-
