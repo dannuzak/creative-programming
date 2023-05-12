@@ -11,10 +11,13 @@ const sketch = () => {
 
     //const point = { x: 800, y: 400, radius: 10 };
     
-    //Creating several points based on the class Point
-    const pointA = new Point(800,400,10);
-    const pointB = new Point(300,700,10);
+    //Creating several points based on the class Point (same properties and structure)
+   /*  const pointA = new Point(800,400,10);
+    const pointB = new Point(300,700,10); */
     
+    const agentA = new Agent(800,400);
+    const agentB = new Agent(300,700);
+
     context.beginPath();
     context.arc(pointA.x, pointA.y, pointA.radius, 0, Math.PI * 2);
     context.fillStyle = 'black';
@@ -22,7 +25,6 @@ const sketch = () => {
 
     context.beginPath();
     context.arc(pointB.x, pointB.y, pointB.radius, 0, Math.PI * 2);
-    context.fillStyle = 'black';
     context.fill();
   };
 
@@ -40,3 +42,12 @@ class Point {
     this.radius = radius;
   }
 }
+
+class Agent {
+  constructor(x,y) {
+    this.pos = new Point(x,y);
+    this.radius = 10;
+  }
+}
+
+
