@@ -40,7 +40,9 @@ const sketch = ({ context, width, height }) => {
 
         if(dist > 200) continue; 
 
+        context.lineWidth = math.mapRange(dist, 0, 200,12, 1);
         
+        //n = mapRange(value, inputMin, inputMax, ouptutMin, outputMax, clamp = false)
 
         context.beginPath();
         context.moveTo(agent.pos.x, agent.pos.y);
