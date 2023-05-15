@@ -29,17 +29,24 @@ const sketch = ({ context, width, height }) => {
 
     for(let i = 0; i < agents.length; i++) {
       const agent = agents[i];
-//before we were checking each pair of agents twice, when i = 0, we go over j = 0, 1, 2 ,3, etc and lines are being drwan twice (0 to 1, from 1 to 0). We were also checking      
+//before we were checking each pair of agents twice, when i = 0, we go over j = 0, 1, 2 ,3, etc and lines are being drwan twice (0 to 1, from 1 to 0). We were also checking 0 against 0, 1 to 1 and that's unneccessary. The second loop will run once.       
 //now when i is 0, j is going to be 1
       for(let j = i + 1; j < agents.length; j++){
         const other = agents[j];
+
+
+      //connecting the dots that are close to each other
+      const dist = agent.pos.getDistance(other.pos);
+
+        if(dist > 200) continue; 
+
+        
 
         context.beginPath();
         context.moveTo(agent.pos.x, agent.pos.y);
         context.lineTo(other.pos.x, other.pos.y);
         context.stroke();
       }
-
      
     }
 
@@ -58,7 +65,16 @@ class Vector {
 		this.x = x;
 		this.y = y;
 	}
+
+
+  getDistance(v){ // Pythagoras
+    const dx = this.x -v.x;
+    const dy = this.y - v.y;
+    return Math.sqrt(dx * dx + dy * dy); //returning the distance
+  }
 }
+
+
 
 class Agent {
 	constructor(x, y) {
