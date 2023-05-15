@@ -29,7 +29,8 @@ const sketch = ({ context, width, height }) => {
 
     for(let i = 0; i < agents.length; i++) {
       const agent = agents[i];
-
+//before we were checking each pair of agents twice, when i = 0, we go over j = 0, 1, 2 ,3, etc and lines are being drwan twice (0 to 1, from 1 to 0). We were also checking      
+//now when i is 0, j is going to be 1
       for(let j = i + 1; j < agents.length; j++){
         const other = agents[j];
 
