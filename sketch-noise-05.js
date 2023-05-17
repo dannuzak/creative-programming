@@ -3,13 +3,14 @@ const random = require('canvas-sketch-util/random');
 const math = require('canvas-sketch-util/math')
 
 const settings = {
-  dimensions: [ 1080, 1080 ]
+  dimensions: [ 1080, 1080 ],
+  animate: true
 };
 
 // we need some vars, columns, rows and number of cells. Width and height for grid and cell, and pos x and y for margin.
 
 const sketch = () => {
-  return ({ context, width, height }) => {
+  return ({ context, width, height, frame }) => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
 
@@ -35,9 +36,10 @@ for (let i = 0; i < numCells; i++) {
   const w = cellw * 0.8;
   const h = cellh * 0.8;
 
-  const n = random.noise2D(x,y, 0.001); // noise2d gives us anumber between -1 and 1 and when multiplied by Math.PI we get the equivalent of - 180 degrees to 180 degrees and to see it we need to rotate our context by angle
+  const n = random.noise2D(x + frame * 10,y, 0.001); // noise2d gives us anumber between -1 and 1 and when multiplied by Math.PI we get the equivalent of - 180 degrees to 180 degrees and to see it we need to rotate our context by angle
   //Right now the frequency is too high, because of the big dif between x and y, we fix adding the 3rd param in noise which is frequency. We also add amplitud, not as 4th param of noise, but to angle and the lines start flowing nicely.
-
+  //to animate we add that prop and also as param for the sketch. We add frame to x and multiply it for a bigger number so it is not too slow.
+  
   const angle = n * Math.PI * 0.2;  
 
   //const scale = (n + 1) / 2 * 30;
@@ -64,3 +66,5 @@ for (let i = 0; i < numCells; i++) {
 };
 
 canvasSketch(sketch, settings);
+
+//npx canvas-sketch sketch-noise-05.js --open
