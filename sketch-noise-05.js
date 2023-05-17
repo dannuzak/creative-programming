@@ -1,4 +1,5 @@
 const canvasSketch = require('canvas-sketch');
+const random = require('canvas-sketch-util/random');
 
 const settings = {
   dimensions: [ 1080, 1080 ]
@@ -11,8 +12,8 @@ const sketch = () => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
 
-    const cols = 4;
-    const rows = 3;
+    const cols = 10;
+    const rows = 10;
     const numCells = cols * rows;
 
     const gridw = width * 0.8;
@@ -33,10 +34,17 @@ for (let i = 0; i < numCells; i++) {
  const w = cellw * 0.8;
  const h = cellh * 0.8;
 
+
+
+  const n = random.noise2D(x,y); // noise2d gives us anumber between -1 and 1 and when multiplied by Math.PI we get the equivalent of - 180 degrees to 180 degrees and to see it we need to rotate our context by angle
+
+  const angle = n * Math.PI;  
+
  context.save();
  context.translate(x,y);
  context.translate(margx, margy);
  context.translate(cellw * 0.5, cellh * 0.5);
+ context.rotate(angle);
 
  context.beginPath();
  context.moveTo(w * -0.5, 0);
