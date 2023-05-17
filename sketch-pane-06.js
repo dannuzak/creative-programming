@@ -11,6 +11,8 @@ const settings = {
 const params = {
   cols: 10,
   rows: 10,
+  scaleMin: 1,
+  scaleMax: 30,
 }
 
 const sketch = () => {
@@ -42,7 +44,7 @@ for (let i = 0; i < numCells; i++) {
   
   const angle = n * Math.PI * 0.2;  
 
-  const scale = math.mapRange(n, -1, 1, 1, 30);
+  const scale = math.mapRange(n, -1, 1, params.scaleMin, params.scaleMax);
 
   context.save();
   context.translate(x,y);
@@ -70,9 +72,11 @@ const createPane = () => {
   folder = pane.addFolder({title: 'Grid'});
   folder.addInput(params, 'cols', {min: 2, max: 50, step: 1});
   folder.addInput(params, 'rows', {min: 2, max: 50, step: 1});
+  folder.addInput(params, 'scaleMin', {min: 1, max: 100});
+  folder.addInput(params, 'scaleMax', {min: 1, max: 100});
 }
 
 createPane();
 canvasSketch(sketch, settings);
 
-//npx canvas-sketch sketch-noise-05.js --open
+//npx canvas-sketch sketch-pane-06.js --open
