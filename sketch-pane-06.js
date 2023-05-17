@@ -42,7 +42,8 @@ for (let i = 0; i < numCells; i++) {
   const w = cellw * 0.8;
   const h = cellh * 0.8;
 
-  const n = random.noise2D(x + frame * 10, y, params.freq); 
+  //const n = random.noise2D(x + frame * 10, y, params.freq); with 2d is obvious the mov from right to left, we use instead 3d and frame is the 3rd param. The mov is more organic now.
+  const n = random.noise3D(x, y, frame * 10, params.freq); 
   
   const angle = n * Math.PI * params.amp;  
 
