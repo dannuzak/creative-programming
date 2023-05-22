@@ -52,10 +52,38 @@ const sketch = ({ context, width, height }) => {
     typeContext.fillText(text, 0, 0);
     typeContext.restore();
   
+    const typeData = typeContext.getImageData(0,0, cols, rows).data;
+    console.log(typeData);
+
     context.drawImage(typeCanvas, 0, 0);
+
+    for(let i = 0; i < numCells; i++) {
+      const col = i % cols; 
+      const row = Math.floor(i / cols);
+
+      const x = col * cell;
+      const y = row * cell;
+
+      const r = typeData[ i * 4 + 0];
+      const g = typeData[ i * 4 + 1];
+      const b = typeData[ i * 4 + 2];
+      const a = typeData[ i * 4 + 3];
+      
+      context.fillStyle = `rgb(${r}, ${g}, ${b})`;
+
+      context.save();
+      context.translate(x,y);
+
+      //context.fillRect(0f, 0, cell, cell);
+
+      context.beginPath();
+      context.arc(0, 0, cell * 0.5 , 0, Math.PI * 2);
+      //the radius needs to be half of the cell
+      context.fill();
+      context.restore();
+    }
   };
 };
-
 
 const onKeyUp = (e) => {
   text = e.key.toUpperCase();
@@ -70,3 +98,4 @@ const start = async () => {
 
 start();
 
+//npx canvas-sketch sketch-bitmap-08.js --open
