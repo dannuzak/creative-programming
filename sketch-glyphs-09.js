@@ -28,7 +28,7 @@ const sketch = ({ context, width, height }) => {
 		typeContext.fillStyle = 'black';
 		typeContext.fillRect(0, 0, cols, rows);
 
-		fontSize = cols;
+		fontSize = cols * 1.2; //increasing the size of the main glyph
 
     typeContext.fillStyle = 'white';
 		typeContext.font = `${fontSize}px ${fontFamily}`;
@@ -62,7 +62,8 @@ const sketch = ({ context, width, height }) => {
     context.textBaseline = 'middle';
     context.textAlign = 'center';
     
-    context.drawImage(typeCanvas, 0, 0);
+    //context.drawImage(typeCanvas, 0, 0);
+    //we can stp drawing the small canvas
 
     for(let i = 0; i < numCells; i++) {
       const col = i % cols; 
@@ -79,7 +80,8 @@ const sketch = ({ context, width, height }) => {
 
       const glyph = getGlyph(r); // any would do
       context.font = `${cell * 2}px ${fontFamily}`;
-      //increasing the font
+      if (Math.random() < 0.1) context.font = `${cell * 6}px ${fontFamily}`;
+      //increasing the font to six times
       
       context.fillStyle = 'white';
 
