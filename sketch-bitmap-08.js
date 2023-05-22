@@ -73,6 +73,7 @@ const sketch = ({ context, width, height }) => {
 
       context.save();
       context.translate(x,y);
+      context.translate(cell * 0.5, cell * 0.5);
 
       //context.fillRect(0f, 0, cell, cell);
 
