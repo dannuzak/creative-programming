@@ -49,7 +49,6 @@ const sketch = () => {
 
 const onKeyUp = (e) => {
   text = e.key.toUpperCase();
-  console.log('e.key', e.console)
   manager.render();
 }
 
