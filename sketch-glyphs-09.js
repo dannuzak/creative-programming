@@ -1,4 +1,5 @@
 const canvasSketch = require('canvas-sketch');
+const random = require('canvas-sketch-util/random')
 
 const settings = {
   dimensions: [ 1080, 1080 ]
@@ -57,6 +58,10 @@ const sketch = ({ context, width, height }) => {
     context.fillStyle = 'black';
     context.fillRect(0, 0, width, height);
 
+    //aligning the glyphs
+    context.textBaseline = 'middle';
+    context.textAlign = 'center';
+    
     context.drawImage(typeCanvas, 0, 0);
 
     for(let i = 0; i < numCells; i++) {
@@ -96,7 +101,11 @@ const getGlyph = (v) => { // depending on how brigth the pixel is, i want to ret
  if (v < 150) return '-';
  if (v < 200) return '+';
 
- return text;
+ const glyphs = '_= /'.split('');
+ //splits a string into an array of substrings, and returns the array
+
+ return random.pick(glyphs);
+ //Picks a random element from the specified array.
 }
 
 const onKeyUp = (e) => {
