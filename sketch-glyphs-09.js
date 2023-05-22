@@ -53,12 +53,11 @@ const sketch = ({ context, width, height }) => {
     typeContext.restore();
   
     const typeData = typeContext.getImageData(0,0, cols, rows).data;
-    console.log(typeData);
-
-    context.drawImage(typeCanvas, 0, 0);
 
     context.fillStyle = 'black';
     context.fillRect(0, 0, width, height);
+
+    context.drawImage(typeCanvas, 0, 0);
 
     for(let i = 0; i < numCells; i++) {
       const col = i % cols; 
@@ -72,7 +71,12 @@ const sketch = ({ context, width, height }) => {
       const b = typeData[ i * 4 + 2];
       const a = typeData[ i * 4 + 3];
       
-      context.fillStyle = `rgb(${r}, ${g}, ${b})`;
+
+      const glyph = getGlyph(r); // any would do
+      context.font = `${cell * 2}px ${fontFamily}`;
+      //increasing the font
+      
+      context.fillStyle = 'white';
 
       context.save();
       context.translate(x,y);
@@ -80,11 +84,20 @@ const sketch = ({ context, width, height }) => {
 
       //context.fillRect(0f, 0, cell, cell);
 
-      context.fillText(text, 0, 0);
+      context.fillText(glyph, 0, 0);
       context.restore();
     }
   };
 };
+
+const getGlyph = (v) => { // depending on how brigth the pixel is, i want to return different glyphs
+ if (v < 50) return '';
+ if (v < 100) return '.';
+ if (v < 150) return '-';
+ if (v < 200) return '+';
+
+ return text;
+}
 
 const onKeyUp = (e) => {
   text = e.key.toUpperCase();
