@@ -57,6 +57,9 @@ const sketch = ({ context, width, height }) => {
 
     context.drawImage(typeCanvas, 0, 0);
 
+    context.fillStyle = 'black';
+    context.fillRect(0, 0, width, height);
+
     for(let i = 0; i < numCells; i++) {
       const col = i % cols; 
       const row = Math.floor(i / cols);
@@ -77,10 +80,7 @@ const sketch = ({ context, width, height }) => {
 
       //context.fillRect(0f, 0, cell, cell);
 
-      context.beginPath();
-      context.arc(0, 0, cell * 0.5 , 0, Math.PI * 2);
-      //the radius needs to be half of the cell
-      context.fill();
+      context.fillText(text, 0, 0);
       context.restore();
     }
   };
@@ -99,4 +99,4 @@ const start = async () => {
 
 start();
 
-//npx canvas-sketch sketch-bitmap-08.js --open
+//npx canvas-sketch sketch-glyphs-09.js --open
