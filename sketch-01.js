@@ -37,7 +37,7 @@ const sketch = () => {
 			context.rect(x,y,w,h);
 			context.stroke();
 
-			if (Math.random() > 0.5) { //adding random inner squares
+			if (Math.random() > 0.5) { //adding blue random inner squares
 				context.beginPath();
 				context.rect(x + off / 2, y + off / 2, w - off, h - off);
 			
