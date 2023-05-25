@@ -72,7 +72,8 @@ const math = require('canvas-sketch-util/math');
 const random = require('canvas-sketch-util/random');
 
     const settings = {
-      dimensions: [ 1080, 1080 ]
+      dimensions: [ 1080, 1080 ],
+      //animate: true,
     };
     
     const randomRange = (min, max) => {
@@ -132,3 +133,5 @@ const random = require('canvas-sketch-util/random');
 };
 
 canvasSketch(sketch, settings);
+
+//npx canvas-sketch sketch-02.js --open

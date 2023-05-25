@@ -76,3 +76,4 @@ class Agent {
 		context.restore();
 	}
 }
+//npx canvas-sketch sketch-03.js --open

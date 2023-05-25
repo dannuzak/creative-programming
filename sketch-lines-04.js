@@ -110,3 +110,5 @@ class Agent {
 		context.restore();
 	}
 }
+
+//npx canvas-sketch sketch-lines-04.js --open

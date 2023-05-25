@@ -4,7 +4,8 @@ const settings = {
 /*   dimensions: 'A4',   // [ 600, 600 ],
   pixelsPerInch: 300,
   orientation: 'landscape'	 */
-  dimensions: [ 1000, 1000 ]
+  dimensions: [ 1000, 1000 ],
+  //animate: true,
 };
 
 const sketch = () => {
@@ -48,3 +49,5 @@ const sketch = () => {
 };
 
 canvasSketch(sketch, settings);
+
+//npx canvas-sketch sketch-01.js --open
