@@ -1,3 +1,4 @@
+
 const canvasSketch = require('canvas-sketch');
 
 const settings = {
@@ -18,9 +19,9 @@ const sketch = () => {
 	const h = 60; 
 	const gap = 20; */
 	const w = width * 0.10;  // 10% of whatever the width of the canvas is
-	const h = height * 0.10;
-	const gap = width * 0.03;
-	const ix = width * 0.17;
+	const h = height * 0.10;  // making them relative to the size of the canvas
+	const gap = width * 0.03; //about 3%
+	const ix = width * 0.17; //100 divided by 600 is about 17%
 	const iy = height * 0.17;
 	context.lineWidth = width * 0.01;
 	
@@ -29,8 +30,8 @@ const sketch = () => {
 
 	for (let i = 0; i < 5; i++){
         for(let j = 0; j < 5; j++) {
-			let x = ix + (w + gap) * i;
-			let y = iy + (h + gap) * j;
+			x = ix + (w + gap) * i;
+			y = iy + (h + gap) * j;
 
 			context.beginPath(); //the number after the + is where the next square will start
 			context.rect(x,y,w,h);

@@ -34,10 +34,19 @@
   /* arrays and loops */
       
   let menu = ['starter', 'main','desser', 'drinks'];
+
+
+  /* for(let i = 0; i < 4; 1++){
+    console.log('menu[i]',menu[i]);
+  } */
+
+
       for (let i = 0; i < menu.length; i++) { // now it doesnt matter how long the array is, it will go through all the items
         console.log(menu[i]);
       }
-      //populating an array
+      
+      
+      //populating an array, 10 iterations:
 
       let years = [];
 
@@ -51,6 +60,8 @@
     const gravity = 9.81
     let velocity = 0.0;
     
+
+    //printint items of the array separately
     menu.forEach(item => {
       console.log(item);
     })
@@ -61,25 +72,39 @@
     console.log(item)
   })
 
+//drawing 5 squares
+/*   for (let i = 0; i < 5; i++) {
+      context.beginPath();
+      context.rect(100 + 60 * i, 100, 60, 60); //x, y, w, h   60 in x times the number of iterations is where the next square will start
+      context.stroke();
+    } */
+
     /* Drawing a grid of 25 squares */
+
+    //these values wont change so we can remove them from the loop and declare them as const
+    //more organized
+    const w = 60;
+    const h = 60;
+    const gap = 20;
+    let x, y;
       
     // Nesting loops
       for (let i = 0; i < 5; i++){
         for(let j = 0; j < 5; j++) {
 
-        let w = 60;
+        /* let w = 60;
         let h = 60;
-        let gap = 20;
-        let x = 100 + (w + gap) * i;
-        let y = 100 + (h + gap) * j;
+        let gap = 20; */
+        x = 100 + (w + gap) * i;
+        y = 100 + (h + gap) * j;
         
-
+        // drawing grid of blue squares
         context.beginPath(); //the number after the + is where the next square will start
         context.rect(x,y,w,h);
         //context.rect(100 + 110 * i,100,50,50);
         context.stroke();
 
-        /*** adding blue squares ***/
+        /*** adding black squares ***/
         if( i > 0 && i < 3) {
             context.fillStyle = 'black'  //blue
             context.beginPath();
@@ -89,14 +114,15 @@
           }
 
         /*** Creating a random number of squares ***/
-         if (Math.random() > 0.5) {
+        //math random returns a random number between 0 and 1. good for regenerative design
+        if(Math.random() > 0.5) { // this will be true 50% of the times 
           context.beginPath();
           context.lineWidth = 2;
           context.rect(x + 8, y + 8, w - 16, h - 16);
           context.stroke();
         }
-        }
       }
+    }
         /* 
           let x = 5;
 

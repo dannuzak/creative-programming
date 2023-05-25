@@ -76,8 +76,6 @@ class Vector {
   }
 }
 
-
-
 class Agent {
 	constructor(x, y) {
 		this.pos = new Vector(x, y);
@@ -111,4 +109,3 @@ class Agent {
 	}
 }
 
-//npx canvas-sketch sketch-lines-04.js --open

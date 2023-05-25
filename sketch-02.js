@@ -1,6 +1,38 @@
 /* FINAL EXERCISE */
 
-/* const canvasSketch = require('canvas-sketch');
+
+//1. 
+
+const canvasSketch = require('canvas-sketch');
+
+const settings = {
+  dimensions: [ 1080, 1080 ]
+};
+
+const sketch = () => {
+  return ({ context, width, height }) => {
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, width, height);
+
+    context.fillStyle = 'black';
+
+    //one way of placing the square
+    const x = width * 0.5;
+    const y = height * 0.5;
+    const w = width * 0.3;
+    const h = height * 0.3;
+
+    context.beginPath()
+    context.rect(x,y,w,h);
+    context.fill();
+
+  };
+};
+
+canvasSketch(sketch, settings);
+
+/*
+const canvasSketch = require('canvas-sketch');
 const math = require('canvas-sketch-util/math');
 const random = require('canvas-sketch-util/random');
 
@@ -62,11 +94,10 @@ const random = require('canvas-sketch-util/random');
           context.restore();
         } 
   };
-};
+}; 
 
 canvasSketch(sketch, settings); */
-
-
+/* 
 const canvasSketch = require('canvas-sketch');
 const math = require('canvas-sketch-util/math');
 const random = require('canvas-sketch-util/random');
@@ -132,6 +163,6 @@ const random = require('canvas-sketch-util/random');
   };
 };
 
-canvasSketch(sketch, settings);
+canvasSketch(sketch, settings);  */
 
 //npx canvas-sketch sketch-02.js --open
