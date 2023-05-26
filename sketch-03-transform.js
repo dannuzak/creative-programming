@@ -54,11 +54,20 @@ const sketch = () => {
     context.rect(-w * 0.5, -h * 0.5, w, h); // w and h need to be negative and we can divide by 2 as well
     context.fill(); */
 
+    //function degrees to radians
+    const degToRad = degrees => {
+      return degrees / 180 * Math.PI;
+    }
+
      //drawing the circle with reference to the canvas, not the square using save and restore, every transformation will be in blocks like this
+    
+    
      context.save();
      context.translate(x,y); 
-     context.rotate(0.3);
- 
+     //context.rotate(0.3); // we are using radians not degrees
+     context.rotate(degToRad(45)); // we are using radians not degrees
+    //context.rotate(45 / 180 * Math.PI); converting degrees to radians
+    
      context.beginPath();
      context.rect(-w * 0.5, -h * 0.5, w, h); 
      context.fill();
