@@ -40,8 +40,6 @@ const random = require('canvas-sketch-util/random');
       dimensions: [ 1080, 1080 ]
     };
     
-   
-
     const sketch = () => {
       return ({ context, width, height }) => {
         context.fillStyle = 'white';
@@ -78,13 +76,13 @@ const random = require('canvas-sketch-util/random');
    
         } */
 
-// creating a sun with the slices
+// drawing a sun with the slices
 
         const cx = width * 0.5;  // the center of our circle, we rename
         const cy = height * 0.5;
     
         const w = width * 0.01;
-        const h = height * 0.2;
+        const h = height * 0.15;
         let x, y; // we declare them with let cause we will modify their values within the loop
         
         const num = 40;
@@ -103,7 +101,8 @@ const random = require('canvas-sketch-util/random');
           context.scale(random.range(0.2, 2.5), random.range(1, 2));
 
           context.beginPath();
-          context.rect(-w * 0.5, -h * 0.5, w, h);
+          context.fillStyle = 'orange';
+          context.rect(-w * 0.5, random.range(0, -h * 0.5), w, h);
           context.fill();
           context.restore();
 
@@ -113,8 +112,21 @@ const random = require('canvas-sketch-util/random');
          
           context.beginPath();
           context.fillStyle = 'yellow';
-          context.arc(0, 0, 200, 0, Math.PI * 2);
+          context.arc(0, 0, 220, 0, Math.PI * 2);
           context.fill();
+          context.restore();
+
+          context.save();
+          context.translate(cx,cy);
+          context.rotate(-angle);
+          
+          context.lineWidth = (random.range(5, 15));
+
+          context.beginPath();
+          context.arc(random.range(15, 70), random.range(15, 70), radius * random.range(2, 2.2), 0, slice * 0.4);
+          //context.arc( 0, 0, radius * 2.2, slice * -0.3, slice * 0.3 ); makes the arcs a bit longer
+          //context.arc(cx,cy, radius * random.range(0.7, 1.3), slice * random.range(1, -8), slice * random.range(1, 5));
+          context.stroke();
           context.restore();
 
           
