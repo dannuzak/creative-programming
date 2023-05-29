@@ -74,7 +74,9 @@ class Agent {
 */
 
 
+//drawing 40 agents
 
+/* 
 const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random');
 const math = require('canvas-sketch-util/math');
@@ -134,14 +136,9 @@ class Agent {
   }
 
 }
-
-
+ */
 
 /* 
-
-
-
-
 
 const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random');

@@ -4,6 +4,7 @@ const math = require('canvas-sketch-util/math');
 
 const settings = {
 	dimensions: [ 1080, 1080 ],
+  animate: true
 };
 
 const sketch = ({ context, width, height }) => {
@@ -22,6 +23,7 @@ const sketch = ({ context, width, height }) => {
 		context.fillRect(0, 0, width, height);
 
 		agents.forEach(agent => {
+      agent.update();
 			agent.draw(context);
 		});
 	};
@@ -29,7 +31,7 @@ const sketch = ({ context, width, height }) => {
 
 canvasSketch(sketch, settings);
 
-class Point {
+class Vector {
   constructor(x,y) {
     this.x = x;
     this.y = y;
@@ -38,13 +40,19 @@ class Point {
 
 class Agent {
   constructor(x,y, width, height) {
-    this.pos = new Point(x,y);
+    this.pos = new Vector(x,y);
     this.w = random.range( width * 0.01,  width * 0.03, );
     this.h = random.range( height * 0.01,  height * 0.03, );
+    this.vel = random.range(1, 5);
   }
 
+  update(canvasHeight) {
+    this.pos.y += this.vel;
 
-
+    if (this.pos.y > canvasHeight) {
+      this.pos.y = random.range(-100, 0);
+    }
+  }
 
   draw(context) { 
     
@@ -53,7 +61,6 @@ class Agent {
     
     context.fillStyle = randomColor;
 
- 
     context.save();
     context.translate(this.pos.x, this.pos.y);
 
