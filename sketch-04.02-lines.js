@@ -1,3 +1,7 @@
+// TASK:
+
+// - connecting the dots with lines using moveTo(), lineTo(), getDistance and mapRange 
+
 const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random');
 const math = require('canvas-sketch-util/math');
@@ -24,9 +28,10 @@ const sketch = ({ context, width, height }) => {
 	}
 
 	return ({ context, width, height }) => {
-		context.fillStyle = 'white';
+		context.fillStyle = 'blue';
 		context.fillRect(0, 0, width, height);
 
+	// connecting the dots with lines
     for(let i = 0; i < agents.length; i++) {
       const agent = agents[i];
 //before we were checking each pair of agents twice, when i = 0, we go over j = 0, 1, 2 ,3, etc and lines are being drwan twice (0 to 1, from 1 to 0). We were also checking 0 against 0, 1 to 1 and that's unneccessary. The second loop will run once.       
@@ -34,13 +39,13 @@ const sketch = ({ context, width, height }) => {
       for(let j = i + 1; j < agents.length; j++){
         const other = agents[j];
 
-
       //connecting the dots that are close to each other
       const dist = agent.pos.getDistance(other.pos);
 
         if(dist > 200) continue; 
+		// continue says: go to the next interation of the loop adn everything after continue is ignored
 
-        context.lineWidth = math.mapRange(dist, 0, 200,12, 1);
+        context.lineWidth = math.mapRange(dist, 0, 200,12, 1); // when distance is 0, width is 12, when it is 200, then it is 1
         
         //n = mapRange(value, inputMin, inputMax, ouptutMin, outputMax, clamp = false)
 
@@ -70,6 +75,7 @@ class Vector {
 
 
   getDistance(v){ // Pythagoras
+	// v is the other vector
     const dx = this.x -v.x;
     const dy = this.y - v.y;
     return Math.sqrt(dx * dx + dy * dy); //returning the distance
@@ -109,3 +115,4 @@ class Agent {
 	}
 }
 
+// npx canvas-sketch sketch-04.02-lines.js --open
