@@ -309,6 +309,3 @@ canvasSketch(sketch, settings);
 
 // npx canvas-sketch sketch-03.03-arcs.js
 
-/* Hello, 
-
-I am following the instructions to export images and they do appear in the downloads folder. However, exporting my exercises as an mp4 or as GIF is not working for me. I couldn't create a folder for the images either. */

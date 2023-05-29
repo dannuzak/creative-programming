@@ -137,4 +137,4 @@ const random = require('canvas-sketch-util/random');
 
 canvasSketch(sketch, settings);
 
-//npx canvas-sketch sketch-project-draft-10.js --open
+//npx canvas-sketch sketch-project-draft-10.01.js --open
