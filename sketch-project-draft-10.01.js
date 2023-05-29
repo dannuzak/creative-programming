@@ -46,6 +46,7 @@ class Agent {
     this.vel = random.range(1, 5);
   }
 
+  //rectangles falling, the height is being passed to reset the position of the rectanle when it goes beyond the canvas height
   update(canvasHeight) {
     this.pos.y += this.vel;
 
