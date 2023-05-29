@@ -95,6 +95,7 @@ const random = require('canvas-sketch-util/random');
           x = cx + radius * Math.sin(angle);
           y = cy + radius * Math.cos(angle); 
 
+        
           context.save();
           context.translate(x,y);
           context.rotate(-angle);
