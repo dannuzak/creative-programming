@@ -1,3 +1,7 @@
+/* 
+
+// Rectangles falling once
+
 const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random');
 const math = require('canvas-sketch-util/math');
@@ -75,4 +79,79 @@ class Agent {
     context.restore();
   }
 
+} */
+
+// Rectangles falling on loop
+
+const canvasSketch = require('canvas-sketch');
+const random = require('canvas-sketch-util/random');
+
+const settings = {
+  dimensions: [1080, 1080],
+  animate: true,
+  duration: Infinity, // Run the animation loop indefinitely
+};
+
+const sketch = ({ context, width, height }) => {
+  const agents = [];
+
+  for (let i = 0; i < 40; i++) {
+    const x = random.range(0, width);
+    const y = random.range(0, height);
+
+    agents.push(new Agent(x, y, width, height));
+  }
+
+  return ({ context, width, height }) => {
+    context.fillStyle = 'black';
+    context.fillRect(0, 0, width, height);
+
+    agents.forEach(agent => {
+      agent.update(height);
+      agent.draw(context);
+    });
+  };
+};
+
+canvasSketch(sketch, settings);
+
+class Vector {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+class Agent {
+  constructor(x, y, width, height) {
+    this.pos = new Vector(x, y);
+    this.w = random.range(width * 0.01, width * 0.03);
+    this.h = random.range(height * 0.01, height * 0.03);
+    this.vel = new Vector(0, random.range(1, 5));
+  }
+
+  update(canvasHeight) {
+    this.pos.y += this.vel.y;
+
+    if (this.pos.y > canvasHeight) {
+      this.pos.y = random.range(-100, 0);
+    }
+  }
+
+  draw(context) {
+    const randomColors = ['red', 'blue', 'green', 'orange', 'purple'];
+    const randomColor = random.pick(randomColors);
+    context.fillStyle = randomColor;
+
+    context.save();
+    context.translate(this.pos.x, this.pos.y);
+
+    context.lineWidth = 4;
+    context.beginPath();
+    context.rect(0, 0, this.w, this.h);
+    context.fill();
+    context.stroke();
+
+    context.restore();
+  }
 }
