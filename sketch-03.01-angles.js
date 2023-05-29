@@ -26,7 +26,7 @@ const random = require('canvas-sketch-util/random');
     
         context.fillStyle = 'black';
 
-    /*     // creating a little star
+    // creating a little star
         const x = width * 0.5;
         const y = height * 0.5;
         const w = width * 0.01; // we change the width
@@ -35,9 +35,9 @@ const random = require('canvas-sketch-util/random');
         const num = 12; // we want 12 slices
 
         for (let i = 0; i < num; i++) { // we need to change the angle of rotation based on the index of the loop
-          const slice = degToRad(360 / num); // we divide 360 among # slices
+          const slice = degToRad(360 / num); // we divide 360 among 12 = 30
           console.log('slice', slice);
-          const angle = slice * i;
+          const angle = slice * i; // 0, 30, 60, 90, etc...
           console.log('angle', angle);
     
           context.save();
@@ -51,16 +51,16 @@ const random = require('canvas-sketch-util/random');
           context.fill();
           context.restore();
    
-        } */
+        } 
 
 // creating a clock with the slices
-
+/* 
         const cx = width * 0.5;  // the center of our circle, we rename
         const cy = height * 0.5;
     
         const w = width * 0.01;
         const h = height * 0.1;
-        let x, y; // we declare them with let cause we will modify their values within the loop
+        let x, y; // we declare them with let cause we will modify their values within the loop and they will set the position to each shape
         
         const num = 12;
         const radius = width * 0.3; // space between the slices
@@ -81,9 +81,29 @@ const random = require('canvas-sketch-util/random');
           context.fill();
           context.restore();
         } 
-
+  */
   };
+
+  // an alternative to this is:
+  
+  // x = cx + radius * Math.sin(angle);
+  // y = cy + radius * Math.cos(angle); 
+
+  /* 
+  x = radius * Math.sin(angle);
+  y = radius * Math.cos(angle); 
+  
+  context.save();
+          context.translate(cx,cy);
+          context.translate(x,y);
+          context.rotate(-angle);
+
+  */ 
+
+
+
+
 }; 
 
-canvasSketch(sketch, settings);
-//npx canvas-sketch sketch-03-angles.js --open
+canvasSketch(sketch, settings); 
+//npx canvas-sketch sketch-03.01-angles.js --open
