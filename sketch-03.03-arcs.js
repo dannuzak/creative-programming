@@ -196,11 +196,8 @@ const sketch = () => {
   };
 };
  
- 
-
 canvasSketch(sketch, settings);  
  */
-
 
 const canvasSketch = require('canvas-sketch');
 const math = require('canvas-sketch-util/math');
@@ -235,10 +232,10 @@ const sketch = () => {
       const slice = math.degToRad(360 / num);
       const angle = slice * i;
 
-      const radiusArc = width * 0.25;
+      const radiusRect = width * 0.25;
 
-      x = cx + radiusArc * Math.sin(angle);
-      y = cy + radiusArc * Math.cos(angle);
+      x = cx + radiusRect * Math.sin(angle);
+      y = cy + radiusRect * Math.cos(angle);
 
       context.save();
       context.translate(x, y);
@@ -256,7 +253,7 @@ const sketch = () => {
 
       const gradient = context.createLinearGradient(0, 500, 0, 0);
       gradient.addColorStop(0, '#f2960c');
-      gradient.addColorStop(1, 'blue');
+      gradient.addColorStop(1, '#3821cc');
      
       context.strokeStyle = gradient;
 
@@ -271,17 +268,18 @@ const sketch = () => {
       context.rotate(-angle);
          
       context.beginPath();
-      context.fillStyle = 'white';
       context.arc(0, 0, 20, 0, Math.PI * 2);
+      context.fillStyle = 'white';
+      context.strokeStyle = 'orange';
+      context.lineWidth = 3;
       context.fill();
+      context.stroke();
       context.restore();
     } 
 
-    const numCircles = 60;
+    const numCircles = 50;
     const minCircleRadius = width * 0.005;
-    const maxCircleRadius = width * 0.02;
-
-    const circleRadius = random.range(minCircleRadius, maxCircleRadius);
+    const maxCircleRadius = width * 0.02;   
 
     for (let i = 0; i < numCircles; i++) {
       const angle = (i / numCircles) * Math.PI * 2;
@@ -289,15 +287,15 @@ const sketch = () => {
       const x = cx + radius * Math.cos(angle);
       const y = cy + radius * Math.sin(angle);
 
+      const circleRadius = random.range(minCircleRadius, maxCircleRadius);
+
       context.beginPath();
       context.arc(x, y, circleRadius, 0, Math.PI * 2);
-      context.strokeStyle = 'white';
-      context.lineWidth = 2;
+      context.strokeStyle = 'orange';
+      context.lineWidth = 3;
       context.stroke();
     
     }
-
-
   };
 };
  
