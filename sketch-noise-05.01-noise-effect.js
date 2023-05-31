@@ -2,7 +2,7 @@
 // - using the simplex noise algorythm
 // - using noise2D and noise 3D from canvas library
 
-const canvasSketch = require('canvas-sketch');
+/* const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random');
 const math = require('canvas-sketch-util/math')
 
@@ -74,14 +74,14 @@ for (let i = 0; i < numCells; i++) {
 };
 
 canvasSketch(sketch, settings); 
-
+ */
 //npx canvas-sketch sketch-noise-05.01.js --open
 
 
 // TASKS
 // - animating the grid using frame
 
-/* 
+ 
 const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random');
 const math = require('canvas-sketch-util/math')
@@ -142,4 +142,5 @@ for (let i = 0; i < numCells; i++) {
 };
 
 canvasSketch(sketch, settings); 
- */
+
+//npx canvas-sketch sketch-noise-05.01-noise-effect.js --open
