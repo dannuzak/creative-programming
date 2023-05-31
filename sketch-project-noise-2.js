@@ -231,7 +231,7 @@ const sketch = () => {
     context.rotate(angle);
 
     context.lineWidth = 4;
-    context.fillStyle = "white";
+    context.fillStyle = "purple";
 
 // Drawing dots
     context.beginPath();
