@@ -23,6 +23,7 @@ const sketch = () => {
 	const gap = width * 0.03; //about 3%
 	const ix = width * 0.17; //100 divided by 600 is about 17%
 	const iy = height * 0.17;
+	
 	context.lineWidth = width * 0.01;
 	
 	const off = width * 0.02; 
