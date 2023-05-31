@@ -1,6 +1,7 @@
 // TASKS
 // - using the simplex noise algorythm
-// - using noise2D and noise 3D from canvas library
+// - using noise2D 
+// - circles 
 
 const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random');
@@ -14,11 +15,11 @@ const settings = {
 
 const sketch = () => {
   return ({ context, width, height, frame }) => {
-    context.fillStyle = 'blue';
+    context.fillStyle = 'black';
     context.fillRect(0, 0, width, height);
 
-    const cols = 10;
-    const rows = 10;
+    const cols = 20;
+    const rows = 20;
     const numCells = cols * rows;
 
     const gridw = width * 0.8;
@@ -64,26 +65,25 @@ for (let i = 0; i < numCells; i++) {
   context.lineWidth = scale;
   context.strokeStyle = "white";
 
-  // Drawing diamonds
-  // context.beginPath();
-  // context.moveTo(0, -h * 0.5); // Move to the top center of the diamond
-  // context.lineTo(w * 0.5, 0); // Draw a line to the right center
-  // context.lineTo(0, h * 0.5); // Draw a line to the bottom center
-  // context.lineTo(-w * 0.5, 0); // Draw a line to the left center
-  // context.closePath(); // Close the path to complete the diamond
-  // //context.fill();
-  // context.stroke();
-
   //Drawing triangles
-  context.beginPath();
-  context.moveTo(0, -h * 0.5); // Move to the top center of the diamond
-  context.lineTo(w * 0.5, 0); // Draw a line to the right center
-  //context.lineTo(0, h * 0.5); // Draw a line to the bottom center
-  context.lineTo(-w * 0.5, 0); // Draw a line to the left center
-  context.closePath(); // Close the path to complete the diamond
-  //context.fill();
-  context.stroke();
-  context.restore();
+//   context.beginPath();
+//   context.moveTo(0, -h * 0.5); // Move to the top center of the diamond
+//   context.lineTo(w * 0.5, 0); // Draw a line to the right center
+//   //context.lineTo(0, h * 0.5); // Draw a line to the bottom center
+//   context.lineTo(-w * 0.5, 0); // Draw a line to the left center
+//   context.closePath(); // Close the path to complete the diamond
+//   //context.fill();
+//   context.stroke();
+//   context.restore();
+
+// Drawing circles
+context.beginPath();
+context.arc(0, 0, w * 0.5, 0, Math.PI * 2); // Replace the triangle lines with an arc command
+context.closePath();
+// context.fill();
+context.stroke();
+context.restore();
+
   
    }
   };
@@ -91,4 +91,4 @@ for (let i = 0; i < numCells; i++) {
 
 canvasSketch(sketch, settings); 
 
-// npx canvas-sketch sketch-project-noise.js
+// npx canvas-sketch sketch-project-noise-2.js
