@@ -1,7 +1,6 @@
 
-
 // TASKS:
-// using simplex noise algorythm
+// drawing a grid of lines
 const canvasSketch = require('canvas-sketch');
 
 const settings = {

@@ -98,6 +98,6 @@ const createPane = () => {
 createPane();
 canvasSketch(sketch, settings);
 
-//npx canvas-sketch sketch-type-07.js --open
+//npx canvas-sketch sketch-05.02-pane.js --open
 
 //addding perhaps more params: speed of animation, lenght of each stroke, toggle to shift between different shapes
