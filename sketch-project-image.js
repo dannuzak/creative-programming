@@ -86,12 +86,12 @@ const getGlyph = (v) => {
 };
 
 
-const onKeyUp = (e) => {
-  // text = e.key.toUpperCase();
-  // manager.render();
+/* const onKeyUp = (e) => {
+  image = e.key();
+  manager.render();
 };
 
-// document.addEventListener('keyup', onKeyUp);
+ document.addEventListener('keyup', onKeyUp); */
 
 const loadMeSomeImage = (url) => {
   return new Promise((resolve, reject) => {
