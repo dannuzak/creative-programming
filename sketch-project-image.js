@@ -24,7 +24,7 @@ const sketch = ({ context, width, height }) => {
   typeCanvas.height = rows;
 
   return ({ context, width, height }) => {
-    typeContext.fillStyle = 'black';
+    typeContext.fillStyle = 'purple';
     typeContext.fillRect(0, 0, cols, rows);
 
     typeContext.save();
@@ -33,7 +33,7 @@ const sketch = ({ context, width, height }) => {
 
     const typeData = typeContext.getImageData(0, 0, cols, rows).data;
 
-    context.fillStyle = 'black';
+    context.fillStyle = '#611919';
     context.fillRect(0, 0, width, height);
 
     context.textBaseline = 'middle';
@@ -55,9 +55,9 @@ const sketch = ({ context, width, height }) => {
       const glyph = getGlyph(r);
 
       context.font = `${cell * 2}px ${fontFamily}`;
-      if (Math.random() < 0.1) context.font = `${cell * 6}px ${fontFamily}`;
+      if (Math.random() < 0.1) context.font = `${cell * 4}px ${fontFamily}`;
 
-      context.fillStyle = 'white';
+      context.fillStyle = '#f4d4d4';
 
       context.save();
       context.translate(x, y);
@@ -75,9 +75,9 @@ const sketch = ({ context, width, height }) => {
 };
 
 const getGlyph = (v) => {
-  if (v < 50) return 'I';
+  if (v < 50) return '*';
   if (v < 100) return '-';
-  if (v < 150) return '.';
+  if (v < 150) return ':';
   if (v < 200) return '.';
 
   const glyphs = 'Шевченко'.split('');
@@ -103,9 +103,11 @@ const loadMeSomeImage = (url) => {
 };
 
 const start = async () => {
-  const url = 'images/pic-01.jpg';
+  const url = 'images/pic-04.jpg';
   image = await loadMeSomeImage(url);
   manager = await canvasSketch(sketch, settings);
 };
 
 start();
+
+//npx canvas-sketch sketch-project-image.js --open
