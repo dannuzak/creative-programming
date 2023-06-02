@@ -87,5 +87,5 @@ const start = async () => {
 // }
 
 start(); */
-//npx canvas-sketch sketch-type-07.js --open
+//npx canvas-sketch sketch-06.02-types.js --open
 
