@@ -165,6 +165,8 @@ const sketch = ({ context, width, height }) => {
       const g = typeData[ i * 4 + 1];
       const b = typeData[ i * 4 + 2];
       const a = typeData[ i * 4 + 3];
+
+     
       
       const glyph = getGlyph(r);
 
@@ -210,6 +212,7 @@ start();
 
 
 /* 
+FINAL
 
 const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random')

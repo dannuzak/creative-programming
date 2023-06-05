@@ -318,9 +318,14 @@ start();
 // - using getGlyph method
 
 const canvasSketch = require('canvas-sketch');
+const { Pane } = require('tweakpane')
 
 const settings = {
   dimensions: [ 1080, 1080 ]
+};
+
+const params = {
+    glyph: '*'
 };
 
 let manager;
@@ -388,13 +393,7 @@ const sketch = ({ context, width, height }) => {
       const b = typeData[ i * 4 + 2];
       const a = typeData[ i * 4 + 3];
 
-      const params = {
-        glyph: {
-          star: '*',
-          dash: '-',
-          dot: '.'
-        }
-      };
+      
 
       const glyph = getGlyph(r, params);
 
@@ -415,9 +414,35 @@ const sketch = ({ context, width, height }) => {
 };
 
 const getGlyph = (v, params) => {
-  if(v < 50) return ''
-  return params.glyph.star;
+  if(v < 50) return '';
+  // Check the selected glyph from the params object
+  const selectedGlyph = params.glyph;
+
+  // Return the corresponding glyph based on the user selection
+  if (selectedGlyph === '*') {
+    return '*';
+  } else if (selectedGlyph === '-') {
+    return '-';
+  } else if (selectedGlyph === '.') {
+    return '.';
+  }
+
+  // Return a default glyph if none of the options match
+  return '';
+
 }
+
+const createPane = () => {
+    const pane = new Pane();
+    let folder;
+  
+    folder = pane.addFolder({ title: 'Choose glyph' });
+    folder.addInput(params, 'glyph', { options: { '*': '*', '-': '-', '.': '.' } });
+
+  }
+  
+  
+  createPane();
 
 const onKeyUp = (e) => {
   text = e.key.toUpperCase();
