@@ -5,7 +5,7 @@
 /* const canvasSketch = require('canvas-sketch');
 
 const settings = {
-  dimensions: [ 2048, 2048 ]
+  //dimensions: [ 2048, 2048 ]
   dimensions: [ 1080, 1080 ]
 };
 
@@ -28,9 +28,9 @@ canvasSketch(sketch, settings);
 
 } */
 
-/*
-// Drawing 2 dots using classes
 
+// Drawing 2 dots using classes
+/* 
 const canvasSketch = require('canvas-sketch');
 const settings = {
   dimensions: [ 1080, 1080 ]
@@ -68,15 +68,15 @@ class Point {
 class Agent {
   constructor() {
     this.pos = new Point();
-    this.radius = 10;
+    //this.radius = 10;
   }
 }
-*/
+ */
 
 
 //drawing 40 agents
 
-/* 
+ 
 const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random');
 const math = require('canvas-sketch-util/math');
@@ -136,9 +136,9 @@ class Agent {
   }
 
 }
- */
+ 
 
 
 
 
-//npx canvas-sketch sketch-04-objects-and-classes.js --open
+//npx canvas-sketch sketch-04.00-objects-and-classes.js --open
