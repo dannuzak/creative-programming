@@ -31,30 +31,24 @@ class Square {
 		context.save();
 		context.beginPath(); //the number after the + is where the next square will start
 		context.strokeStyle = lightBlue;
-		context.fillStyle = darkBlue;
-
 		context.rect(this.x, this.y, this.grid.w, this.grid.h);
 		context.fillStyle = darkBlue;
+		context.fill();
 		context.stroke();
-		
 
 		if (Math.random() > 0.5) { 
 			context.beginPath();
-			//context.strokeStyle = lightBlue;
-			//context.strokeStyle = darkBlue;
 			context.fillStyle = orange;
 			context.rect(this.x + this.grid.off / 2, this.y + this.grid.off / 2, this.grid.w - this.grid.off, this.grid.h - this.grid.off);
-		
 			context.stroke();
-			
-			context.fill();
-			context.restore();
+			context.fill();	
 		}
 	}
 }
 
 const sketch = () => {
-  return ({ context, width, height }) => {  
+  return ({ context, width, height }) => { 
+	 
     context.fillStyle = brown; 
     context.fillRect(0, 0, width, height);
 
