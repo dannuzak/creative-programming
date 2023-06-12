@@ -3,7 +3,6 @@ const canvasSketch = require('canvas-sketch');
 const settings = {
   dimensions: [1000, 1000],
   animate: true,
-  duration: 5,
 };
 
 class Grid {
