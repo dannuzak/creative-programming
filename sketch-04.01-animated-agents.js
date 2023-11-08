@@ -160,3 +160,5 @@ class Agent {
 		context.restore();
 	}
 } 
+
+//npx canvas-sketch sketch-04.01-animated-agents.js --open

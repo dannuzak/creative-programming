@@ -80,12 +80,11 @@ const sketch = () => {
     context.lineWidth = width * 0.01;
 
     squares.forEach((square) => {
-      square.draw(context, time * 0.2);
+      square.draw(context, time * 0.01);
     });
   };
 };
 
 canvasSketch(sketch, settings);
 
- 
 //npx canvas-sketch sketch-01.01-grid-squares-animated.js --open
