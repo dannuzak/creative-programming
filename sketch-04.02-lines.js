@@ -8,7 +8,6 @@ const settings = {
 };
 
 const animate = () => {
-	console.log('domestika');
 	requestAnimationFrame(animate);
 };
 // animate();
@@ -19,7 +18,6 @@ const sketch = ({ context, width, height }) => {
 	for (let i = 0; i < 40; i++) {
 		const x = random.range(0, width);
 		const y = random.range(0, height);
-
 		agents.push(new Agent(x, y));
 	}
 
@@ -31,9 +29,9 @@ const sketch = ({ context, width, height }) => {
 	// connecting the dots with lines
     for(let i = 0; i < agents.length; i++) {
       const agent = agents[i];
-//before we were checking each pair of agents twice, when i = 0, we go over j = 0, 1, 2 ,3, etc and lines are being drwan twice (0 to 1, from 1 to 0). We were also checking 0 against 0, 1 to 1 and that's unneccessary. The second loop will run once.       
-//now when i is 0, j is going to be 1
-      for(let j = i + 1; j < agents.length; j++){
+		//before we were checking each pair of agents twice, when i = 0, we go over j = 0, 1, 2 ,3, etc and lines are being drwan twice (0 to 1, from 1 to 0). We were also checking 0 against 0, 1 to 1 and that's unneccessary. The second loop will run once.       
+		//now when i is 0, j is going to be 1
+		for(let j = i + 1; j < agents.length; j++){
         const other = agents[j];
 
       //connecting the dots that are close to each other
